@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/sheldonj/zenstack-docs-plugin/compare/zenstack-docs-plugin-v0.2.0...zenstack-docs-plugin-v0.2.1) (2026-03-08)
+
+
+### Bug Fixes
+
+* run npm publish from release-please workflow ([8ce91bc](https://github.com/sheldonj/zenstack-docs-plugin/commit/8ce91bc6eaa19247be23e2dd7a60fa99325ba2de))
+
 ## [0.2.0](https://github.com/sheldonj/zenstack-docs-plugin/compare/zenstack-docs-plugin-v0.1.0...zenstack-docs-plugin-v0.2.0) (2026-03-08)
 
 
