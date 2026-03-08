@@ -4,7 +4,7 @@
     "url": "https://github.com/sheldonj/zenstack-docs-plugin/issues"
   },
   "dependencies": {
-    "beautiful-mermaid": "^0.1.3"
+    "beautiful-mermaid": "^1.1.3"
   },
   "description": "ZenStack plugin that generates rich, browsable Markdown documentation from ZModel schemas",
   "devDependencies": {
