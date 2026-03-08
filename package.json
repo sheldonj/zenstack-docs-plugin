@@ -1,0 +1,75 @@
+{
+  "author": "sheldonj",
+  "bugs": {
+    "url": "https://github.com/sheldonj/zenstack-docs-plugin/issues"
+  },
+  "dependencies": {
+    "beautiful-mermaid": "^0.1.3"
+  },
+  "description": "ZenStack plugin that generates rich, browsable Markdown documentation from ZModel schemas",
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "@zenstackhq/common-helpers": "^3.3.3",
+    "@zenstackhq/language": "^3.3.3",
+    "@zenstackhq/sdk": "^3.3.3",
+    "eslint": "^9.0.0",
+    "eslint-config-canonical": "^47.4.2",
+    "tsup": "^8.0.0",
+    "typescript": "^5.8.0",
+    "typescript-eslint": "^8.56.1",
+    "vitest": "^3.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.js",
+        "types": "./dist/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/index.cjs",
+        "types": "./dist/index.d.cts"
+      }
+    },
+    "./package.json": {
+      "import": "./package.json",
+      "require": "./package.json"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/sheldonj/zenstack-docs-plugin#readme",
+  "keywords": [
+    "zenstack",
+    "zmodel",
+    "documentation",
+    "markdown",
+    "erd",
+    "mermaid",
+    "schema",
+    "prisma",
+    "plugin",
+    "codegen"
+  ],
+  "license": "MIT",
+  "name": "zenstack-docs-plugin",
+  "packageManager": "pnpm@9.5.0",
+  "peerDependencies": {
+    "@zenstackhq/language": ">=3.0.0",
+    "@zenstackhq/sdk": ">=3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheldonj/zenstack-docs-plugin.git"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && tsup-node",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "watch": "tsup-node --watch"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}
