@@ -6,6 +6,8 @@
 
 A [ZenStack](https://zenstack.dev) community plugin that automatically generates rich, browsable Markdown documentation from your ZModel schema — every time you run `zenstack generate`.
 
+> ℹ️ This project is not affiliated with or endorsed by the ZenStack team.
+
 ## Why
 
 Your ZModel schema is already the single source of truth for your data layer: models, relationships, enums, access policies, validation rules, computed fields, procedures. But that knowledge is locked inside `.zmodel` files that non-engineers can't easily read, and manually-maintained wiki pages inevitably drift.
