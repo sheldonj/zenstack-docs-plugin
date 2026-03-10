@@ -142,6 +142,7 @@ plugin documentation {
     includeIndexes         = true
     generateSkill          = true
     generateErd            = true
+    erdFormat              = 'both'
     erdTheme               = 'github-light'
     diagramFormat          = 'svg'
     diagramEmbed           = 'inline'
