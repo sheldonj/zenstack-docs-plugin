@@ -12,12 +12,12 @@
     "@zenstackhq/common-helpers": "^3.3.3",
     "@zenstackhq/language": "^3.3.3",
     "@zenstackhq/sdk": "^3.3.3",
-    "eslint": "^9.0.0",
+    "eslint": "^10.0.3",
     "eslint-config-canonical": "^47.4.2",
     "tsup": "^8.0.0",
     "typescript": "^5.8.0",
     "typescript-eslint": "^8.56.1",
-    "vitest": "^3.0.0"
+    "vitest": "^4.0.18"
   },
   "exports": {
     ".": {
