@@ -74,6 +74,10 @@ export type PluginOptions = {
    * inline in the markdown (`'inline'`). Only applies when `diagramFormat` is
    * `'svg'` or `'both'`.
    */
+  /**
+   * If true, delete the output directory before generating files.
+   */
+  cleanOutput?: boolean;
   diagramEmbed?: 'file' | 'inline';
   diagramFormat?: 'both' | 'mermaid' | 'svg';
   erdFormat?: 'both' | 'mmd' | 'svg';

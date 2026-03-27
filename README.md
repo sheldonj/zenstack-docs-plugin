@@ -152,9 +152,10 @@ plugin documentation {
 | Option | Type | Default | Description |
 |---|---|---|---|
 | `output` | `string` | ZenStack default output path | Directory to write generated docs |
+| `cleanOutput` | `boolean` | `false` | When `true`, the output directory is removed before generation to ensure a clean build (use with caution) |
 | `title` | `string` | `"Schema Documentation"` | Heading on the index page |
 | `fieldOrder` | `"declaration"` or `"alphabetical"` | `"declaration"` | How fields are ordered in tables |
-| `includeInternalModels` | `boolean` | `false` | Include models marked `@@ignore` in output |
+| `includeInternalModels` | `boolean` | `false` | Include models marked `@@ignore` or annotated with `@@meta('doc:ignore', true)` in output |
 | `includeRelationships` | `boolean` | `true` | Generate relationship sections and `relationships.md` |
 | `includePolicies` | `boolean` | `true` | Generate access policy tables |
 | `includeValidation` | `boolean` | `true` | Generate validation rule tables |

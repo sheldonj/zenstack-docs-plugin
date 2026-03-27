@@ -19,10 +19,8 @@ function stabilize(content: string): string {
       /\*\*Generated\*\* \| \d{4}-\d{2}-\d{2}/gu,
       '**Generated** | <REDACTED>',
     )
-    .replaceAll(
-      /Generated:\*\* \d{4}-\d{2}-\d{2}/gu,
-      'Generated:** <REDACTED>',
-    );
+    .replaceAll(/Generated:\*\* \d{4}-\d{2}-\d{2}/gu, 'Generated:** <REDACTED>')
+    .replaceAll(/Generated: \d{4}-\d{2}-\d{2}/gu, 'Generated: <REDACTED>');
 }
 
 describe('documentation plugin: snapshot', () => {

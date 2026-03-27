@@ -44,6 +44,23 @@ export async function generate(context: CliGeneratorContext): Promise<void> {
   options.genCtx = genCtx;
 
   try {
+    if (pluginOptions.cleanOutput) {
+      try {
+        const root = path.parse(outputDir).root;
+        if (outputDir === root) {
+          throw new Error('Refusing to remove root directory');
+        }
+
+        if (fs.existsSync(outputDir)) {
+          fs.rmSync(outputDir, { force: true, recursive: true });
+        }
+      } catch (error) {
+        throw new Error(
+          `Failed to clean output directory "${outputDir}": ${error instanceof Error ? error.message : String(error)}`,
+        );
+      }
+    }
+
     fs.mkdirSync(outputDir, { recursive: true });
   } catch (error) {
     throw new Error(
@@ -302,6 +319,7 @@ function resolveOutputDir(options: PluginOptions, defaultPath: string): string {
  */
 function resolvePluginOptions(raw: Record<string, unknown>): PluginOptions {
   return {
+    cleanOutput: raw['cleanOutput'] === true,
     diagramEmbed: (['file', 'inline'] as const).includes(
       raw['diagramEmbed'] as 'file' | 'inline',
     )
