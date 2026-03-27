@@ -306,7 +306,24 @@ export function isFieldRequired(field: DataField): boolean {
  * Returns `true` if the model has the `@@ignore` attribute.
  */
 export function isIgnoredModel(model: DataModel): boolean {
-  return model.attributes.some((a) => a.decl.ref?.name === '@@ignore');
+  if (model.attributes.some((a) => a.decl.ref?.name === '@@ignore')) {
+    return true;
+  }
+
+  // Support @@meta('doc:ignore', true)
+  for (const attribute of model.attributes) {
+    if (attribute.decl.ref?.name !== '@@meta') {
+      continue;
+    }
+
+    const key = stripQuotes(attribute.args[0]?.$cstNode?.text ?? '');
+    const value = stripQuotes(attribute.args[1]?.$cstNode?.text ?? '');
+    if (key === 'doc:ignore' && value === 'true') {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /**
