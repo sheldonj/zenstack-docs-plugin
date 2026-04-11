@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 function stabilize(content: string): string {
   return content
+    .replaceAll(/(· Generated: )\d{4}-\d{2}-\d{2}/gu, '$1<REDACTED>')
     .replaceAll(
       /zenstack-schema-[\da-f-]+\.zmodel/gu,
       'zenstack-schema-<UUID>.zmodel',

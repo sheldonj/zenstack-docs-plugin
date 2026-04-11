@@ -316,6 +316,7 @@ export function resolveRenderOptions(options: PluginOptions): RenderOptions {
   return {
     fieldOrder:
       options.fieldOrder === 'alphabetical' ? 'alphabetical' : 'declaration',
+    includeGeneratedHeader: options.includeGeneratedHeader !== false,
     includeIndexes: options.includeIndexes !== false,
     includePolicies: options.includePolicies !== false,
     includeRelationships: options.includeRelationships !== false,

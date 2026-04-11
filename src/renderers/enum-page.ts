@@ -67,7 +67,10 @@ function collectEnumUsage(enumDecl: Enum, allModels: DataModel[]): EnumUsage[] {
  */
 function renderHeader(props: EnumPageProps): string[] {
   return [
-    ...generatedHeader(props.options.genCtx),
+    ...generatedHeader(
+      props.options.genCtx,
+      props.options.includeGeneratedHeader,
+    ),
     breadcrumbs('Enums', props.enumDecl.name, '../'),
     '',
     `# ${props.enumDecl.name} <kbd>Enum</kbd>`,

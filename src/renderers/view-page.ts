@@ -63,7 +63,10 @@ function renderHeader(props: ViewPageProps): string[] {
     : ' <kbd>View</kbd>';
 
   return [
-    ...generatedHeader(props.options.genCtx),
+    ...generatedHeader(
+      props.options.genCtx,
+      props.options.includeGeneratedHeader,
+    ),
     breadcrumbs('Views', props.view.name, '../'),
     '',
     `# ${nameDisplay}${badges}`,

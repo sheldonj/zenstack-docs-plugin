@@ -27,6 +27,8 @@ type IndexData = {
   hasErdMmd: boolean;
   hasErdSvg: boolean;
   hasRelationships: boolean;
+  includeGeneratedHeader: boolean;
+  includeGenerationStats: boolean;
   models: DataModel[];
   procedures: Procedure[];
   title: string;
@@ -51,7 +53,7 @@ export function renderIndexPage(props: IndexPageProps): string {
     ...renderProceduresSection(data),
     ...renderErdSection(data),
     ...renderSeeAlso(data),
-    ...renderGenerationStats(data.genCtx),
+    ...renderGenerationStats(data.genCtx, data.includeGenerationStats),
   ].join('\n');
 }
 
@@ -132,7 +134,14 @@ function renderErdSection(data: IndexData): string[] {
 /**
  * Renders a collapsible footer with generation stats (files, duration, source, date).
  */
-function renderGenerationStats(genContext?: GenerationContext): string[] {
+function renderGenerationStats(
+  genContext: GenerationContext | undefined,
+  includeStats: boolean,
+): string[] {
+  if (!includeStats) {
+    return [];
+  }
+
   if (genContext?.durationMs == null || genContext.filesGenerated == null) {
     return [];
   }
@@ -179,7 +188,7 @@ function renderModelsSection(data: IndexData): string[] {
  */
 function renderPageHeader(data: IndexData): string[] {
   return [
-    ...generatedHeader(data.genCtx),
+    ...generatedHeader(data.genCtx, data.includeGeneratedHeader),
     `# ${data.title}`,
     '',
     'This documentation describes a [ZModel](https://zenstack.dev/docs/reference/zmodel/overview) schema' +
@@ -368,6 +377,8 @@ function resolveIndexData(props: IndexPageProps): IndexData {
     hasErdMmd: props.hasErdMmd === true,
     hasErdSvg: props.hasErdSvg === true,
     hasRelationships,
+    includeGeneratedHeader: pluginOptions.includeGeneratedHeader !== false,
+    includeGenerationStats: pluginOptions.includeGenerationStats !== false,
     models: allDataModels
       .filter((m) => !m.isView)
       .sort((a, b) => a.name.localeCompare(b.name)),

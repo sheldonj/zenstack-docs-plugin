@@ -75,7 +75,7 @@ function renderErDiagram(
  */
 function renderHeader(props: RelationshipsPageProps): string[] {
   return [
-    ...generatedHeader(props.genCtx),
+    ...generatedHeader(props.genCtx, props.includeGeneratedHeader),
     '[Index](./index.md) / Relationships',
     '',
     '# Relationships',

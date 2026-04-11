@@ -79,7 +79,10 @@ function renderClassDiagram(typeDef: TypeDef, usedBy: DataModel[]): string[] {
  */
 function renderHeader(props: TypePageProps): string[] {
   return [
-    ...generatedHeader(props.options.genCtx),
+    ...generatedHeader(
+      props.options.genCtx,
+      props.options.includeGeneratedHeader,
+    ),
     breadcrumbs('Types', props.typeDef.name, '../'),
     '',
     `# ${props.typeDef.name} <kbd>Type</kbd>`,

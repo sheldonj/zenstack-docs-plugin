@@ -150,7 +150,10 @@ function renderHeader(props: ModelPageProps): string[] {
   }
 
   return [
-    ...generatedHeader(props.options.genCtx),
+    ...generatedHeader(
+      props.options.genCtx,
+      props.options.includeGeneratedHeader,
+    ),
     breadcrumbs('Models', props.model.name, '../'),
     '',
     `# 🗃️ ${nameDisplay} ${badgeParts.join(' ')}`,

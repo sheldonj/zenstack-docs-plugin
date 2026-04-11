@@ -81,7 +81,14 @@ export function breadcrumbs(
 /**
  * Renders the auto-generated header banner with optional source file and generation date.
  */
-export function generatedHeader(context?: GenerationContext): string[] {
+export function generatedHeader(
+  context?: GenerationContext,
+  includeBanner = true,
+): string[] {
+  if (!includeBanner) {
+    return [];
+  }
+
   const metaParts: string[] = [];
   if (context?.schemaFile) {
     metaParts.push(`Source: ${context.schemaFile}`);

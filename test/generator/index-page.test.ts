@@ -99,6 +99,21 @@ describe('documentation plugin: index page', () => {
     });
   });
 
+  it('omits generation stats on index.md when includeGenerationStats is false', async () => {
+    const tmpDir = await generateFromSchema(
+      `
+            model User {
+                id String @id @default(cuid())
+            }
+        `,
+      { includeGenerationStats: false },
+    );
+
+    const indexContent = readDocument(tmpDir, 'index.md');
+    expect(indexContent).not.toContain('Generation Stats');
+    expect(indexContent).not.toContain('**Duration**');
+  });
+
   it('lists views in a separate section from models', async () => {
     const tmpDir = await generateFromSchema(`
             model User {
