@@ -61,7 +61,10 @@ function renderFlowDiagram(proc: Procedure): string[] {
  */
 function renderHeader(props: ProcedurePageProps): string[] {
   return [
-    ...generatedHeader(props.options.genCtx),
+    ...generatedHeader(
+      props.options.genCtx,
+      props.options.includeGeneratedHeader,
+    ),
     breadcrumbs('Procedures', props.proc.name, '../'),
     '',
     `# ${props.proc.name} <kbd>${props.proc.mutation ? 'Mutation' : 'Query'}</kbd>`,

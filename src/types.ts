@@ -81,6 +81,8 @@ export type PluginOptions = {
   fieldOrder?: 'alphabetical' | 'declaration';
   generateErd?: boolean;
   generateSkill?: boolean;
+  includeGeneratedHeader?: boolean;
+  includeGenerationStats?: boolean;
   includeIndexes?: boolean;
   includeInternalModels?: boolean;
   includePolicies?: boolean;
@@ -114,6 +116,7 @@ export type Relationship = {
 
 export type RelationshipsPageProps = {
   genCtx?: GenerationContext;
+  includeGeneratedHeader: boolean;
   relations: Relationship[];
 };
 
@@ -137,6 +140,7 @@ export type RenderOptions = {
    * Metadata about the current generation run (timestamps, file counts).
    */
   genCtx?: GenerationContext;
+  includeGeneratedHeader: boolean;
   includeIndexes: boolean;
   includePolicies: boolean;
   includeRelationships: boolean;

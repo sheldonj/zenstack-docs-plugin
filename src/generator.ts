@@ -130,6 +130,7 @@ export async function generate(context: CliGeneratorContext): Promise<void> {
     const mdPath = path.join(outputDir, 'relationships.md');
     const content = renderRelationshipsPage({
       genCtx,
+      includeGeneratedHeader: options.includeGeneratedHeader,
       relations: allRelations,
     });
     await writePageWithDiagrams(mdPath, content, diagFmt, diagEmbed, diagTheme);
@@ -322,6 +323,8 @@ function resolvePluginOptions(raw: Record<string, unknown>): PluginOptions {
       raw['fieldOrder'] === 'alphabetical' ? 'alphabetical' : 'declaration',
     generateErd: raw['generateErd'] === true,
     generateSkill: raw['generateSkill'] === true,
+    includeGeneratedHeader: raw['includeGeneratedHeader'] !== false,
+    includeGenerationStats: raw['includeGenerationStats'] !== false,
     includeIndexes: raw['includeIndexes'] !== false,
     includeInternalModels: raw['includeInternalModels'] === true,
     includePolicies: raw['includePolicies'] !== false,

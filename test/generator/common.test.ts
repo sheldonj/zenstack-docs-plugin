@@ -50,6 +50,29 @@ describe('documentation plugin: common features', () => {
       expect(userDocument).not.toContain('[!CAUTION]');
     });
 
+    it('omits the generated banner when includeGeneratedHeader is false', async () => {
+      const noBanner = await generateFromSchema(
+        `
+                model User {
+                    id String @id @default(cuid())
+                    posts Post[]
+                }
+                model Post {
+                    id       String @id @default(cuid())
+                    author   User   @relation(fields: [authorId], references: [id])
+                    authorId String
+                }
+            `,
+        { includeGeneratedHeader: false },
+      );
+
+      const headerPattern = /DO NOT MODIFY THIS FILE/u;
+      expect(readDoc(noBanner, 'index.md')).not.toMatch(headerPattern);
+      expect(readDoc(noBanner, 'models', 'User.md')).not.toMatch(headerPattern);
+      expect(readDoc(noBanner, 'relationships.md')).not.toMatch(headerPattern);
+      expect(readDoc(noBanner, 'index.md')).toMatch(/^# Schema Documentation\n/u);
+    });
+
     it('entity pages show breadcrumb navigation and type badges', () => {
       const userDocument = readDoc(tmpDir, 'models', 'User.md');
       expect(userDocument).toContain('[Index](../index.md)');

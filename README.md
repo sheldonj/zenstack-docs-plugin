@@ -139,6 +139,8 @@ plugin documentation {
     includeRelationships   = true
     includePolicies        = true
     includeValidation      = true
+    includeGeneratedHeader = true
+    includeGenerationStats = true
     includeIndexes         = true
     generateSkill          = true
     generateErd            = true
@@ -158,6 +160,8 @@ plugin documentation {
 | `includeRelationships` | `boolean` | `true` | Generate relationship sections and `relationships.md` |
 | `includePolicies` | `boolean` | `true` | Generate access policy tables |
 | `includeValidation` | `boolean` | `true` | Generate validation rule tables |
+| `includeGeneratedHeader` | `boolean` | `true` | Show the top-of-file “DO NOT MODIFY” banner (source path and generation date) on every generated page |
+| `includeGenerationStats` | `boolean` | `true` | Append the collapsible **Generation Stats** block (files, duration, source, timestamp) to `index.md` |
 | `includeIndexes` | `boolean` | `true` | Generate index/constraint tables |
 | `generateSkill` | `boolean` | `false` | Generate a `SKILL.md` file for AI agent consumption |
 | `generateErd` | `boolean` | `false` | Generate a complete ERD as `.mmd` and `.svg` files |
