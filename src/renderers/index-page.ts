@@ -24,11 +24,11 @@ import {
 type IndexData = {
   enums: Enum[];
   genCtx?: GenerationContext;
-  includeGeneratedHeader: boolean;
-  includeGenerationStats: boolean;
   hasErdMmd: boolean;
   hasErdSvg: boolean;
   hasRelationships: boolean;
+  includeGeneratedHeader: boolean;
+  includeGenerationStats: boolean;
   models: DataModel[];
   procedures: Procedure[];
   title: string;
@@ -374,11 +374,11 @@ function resolveIndexData(props: IndexPageProps): IndexData {
       .filter(isEnum)
       .sort((a, b) => a.name.localeCompare(b.name)),
     genCtx,
-    includeGeneratedHeader: pluginOptions.includeGeneratedHeader !== false,
-    includeGenerationStats: pluginOptions.includeGenerationStats !== false,
     hasErdMmd: props.hasErdMmd === true,
     hasErdSvg: props.hasErdSvg === true,
     hasRelationships,
+    includeGeneratedHeader: pluginOptions.includeGeneratedHeader !== false,
+    includeGenerationStats: pluginOptions.includeGenerationStats !== false,
     models: allDataModels
       .filter((m) => !m.isView)
       .sort((a, b) => a.name.localeCompare(b.name)),

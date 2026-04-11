@@ -70,7 +70,9 @@ describe('documentation plugin: common features', () => {
       expect(readDoc(noBanner, 'index.md')).not.toMatch(headerPattern);
       expect(readDoc(noBanner, 'models', 'User.md')).not.toMatch(headerPattern);
       expect(readDoc(noBanner, 'relationships.md')).not.toMatch(headerPattern);
-      expect(readDoc(noBanner, 'index.md')).toMatch(/^# Schema Documentation\n/u);
+      expect(readDoc(noBanner, 'index.md')).toMatch(
+        /^# Schema Documentation\n/u,
+      );
     });
 
     it('entity pages show breadcrumb navigation and type badges', () => {
